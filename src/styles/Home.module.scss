@@ -7,6 +7,18 @@
   .title {
     font-size: 4rem;
     font-weight: 900;
+    text-align: center;
+
+
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 1rem;
+    min-height: min-content;
+    .title {
+      font-size: 2rem;
+
+    }
   }
   .description {
     max-width: 48rem;
@@ -44,8 +56,12 @@
       border-radius: 4px 0 0 4px;
       border: 1px solid black;
 
-
       padding: 8px;
+
+      @media screen and (max-width: 500px) {
+        width: auto;
+
+      }
     }
     button {
       height: 40px;
@@ -67,4 +83,14 @@
 
 .example {
   margin-top: 64px;
+  .exampleImage {
+    width: 1280px;
+    height: min-content;
+    object-fit: contain;
+    @media screen and (max-width: 1030px) {
+      width: 80vw;
+    }
+  }
+
+
 }

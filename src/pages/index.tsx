@@ -33,7 +33,7 @@ export default function Home() {
                 </form>
             </div>
           <div className={styles.example}>
-              <Image src={exampleImage} alt={"example"}  width={1280}/>
+              <Image src={exampleImage} className={styles.exampleImage} alt={"example"}  width={1280}/>
           </div>
       </main>
         <Footer />
