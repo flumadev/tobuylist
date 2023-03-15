@@ -53,4 +53,9 @@ management experience like no other.
 </p>
 
 # WIP
-> ...
+
+- Motivation
+- Roadmap
+- Developer Guide
+- Architecture
+- Structure
