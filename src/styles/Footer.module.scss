@@ -1,0 +1,53 @@
+.footer {
+  height: 350px;
+  background-color: rgb(8 9 13 / 1);
+  border-color: rgb(32 34 45 / 1);
+  border-top-width: 1px;
+  width: 100vw;
+
+  color: white;
+
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(6,minmax(0,1fr));
+    max-width: 100rem;
+    margin: 0 auto;
+    gap: 1.5rem;
+    .company {
+      grid-column: span 2 / span 2;
+      img {
+        color: #ffffff !important;
+        margin-bottom: 16px;
+      }
+      h1 {
+        margin-bottom: 0.25rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      p{
+        color: rgb(166 170 191 / 1);
+        font-size: .8rem;
+      }
+    }
+
+    .links{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      h3{
+        font-size: .75rem;
+        margin-bottom: 8px;
+      }
+      a{
+        color: #c0c2ce;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+  }
+}
