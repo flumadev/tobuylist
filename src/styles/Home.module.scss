@@ -1,0 +1,70 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+  .title {
+    font-size: 4rem;
+    font-weight: 900;
+  }
+  .description {
+    max-width: 48rem;
+    margin: 16px auto 0px auto;
+    text-align: center;
+    background-color: rgb(var(--primary-glow));
+  }
+}
+
+.formContainer{
+  margin-top: 24px;
+
+  .gitButton{
+    color: white;
+    background-color: black;
+
+    padding: 4px 8px;
+    max-width: 160px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    border-radius: 4px;
+  }
+
+  .form {
+    margin-top: 16px;
+    .emailInput {
+      height: 40px;
+      width: 300px;
+
+      border-radius: 4px 0 0 4px;
+      border: 1px solid black;
+
+
+      padding: 8px;
+    }
+    button {
+      height: 40px;
+      width: 100px;
+      border-radius: 0 4px 4px 0;
+      border: 1px solid black;
+
+      background-color: black;
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+
+}
+
+.example {
+  margin-top: 64px;
+}
