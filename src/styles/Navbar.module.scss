@@ -9,6 +9,10 @@
    align-items: end;
    gap: 12px;
 
+   [aria-disabled="true"] {
+     pointer-events: none;
+     opacity: 0.5;
+   }
    .links {
      display: flex;
      gap: 12px;
