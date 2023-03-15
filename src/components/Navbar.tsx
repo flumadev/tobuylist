@@ -16,28 +16,28 @@ export default function Navbar(){
                 <li className={styles.linksList}>
                     <ul className={styles.links}>
                         <li>
-                            <Link href={"/roadmap"} >
+                            <Link aria-disabled={"true"} href={"/roadmap"} >
                                 Roadmap
                             </Link>
 
                         </li>
                         <li>
-                            <Link href={"/team"} >
+                            <Link aria-disabled={"true"} href={"/team"} >
                                 Team
                             </Link>
                         </li>
                         <li>
-                            <Link href={"/blog"} >
+                            <Link aria-disabled={"true"} href={"/blog"} >
                                 Blog
                             </Link>
                         </li>
                         <li>
-                            <Link href={"/blog"} >
+                            <Link aria-disabled={"true"} href={"/blog"} >
                                 Docs
                             </Link>
                         </li>
                         <li>
-                            <Link href={"/blog"} >
+                            <Link aria-disabled={"true"} href={"/blog"} >
                                 Careers
                             </Link>
                         </li>
@@ -46,12 +46,12 @@ export default function Navbar(){
 
                 <li className={styles.socialList}>
                     <ul className={styles.social}>
-                        <li>
-                            <DiscordLogoIcon width={24} height={24}/>
-                        </li>
-                        <li>
-                            <GitHubLogoIcon width={24} height={24}/>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <DiscordLogoIcon width={24} height={24}/>*/}
+                        {/*</li>*/}
+                        {/*<li>*/}
+                        {/*    <GitHubLogoIcon width={24} height={24}/>*/}
+                        {/*</li>*/}
                     </ul>
                 </li>
             </ul>
