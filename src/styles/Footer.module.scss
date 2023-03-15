@@ -9,18 +9,29 @@
 
   padding-top: 2.5rem;
   padding-bottom: 5rem;
+  @media screen and (max-width: 770px) {
+    height: min-content;
 
+
+  }
   .container {
     display: grid;
     grid-template-columns: repeat(6,minmax(0,1fr));
-    max-width: 100rem;
+    max-width: 80%;
     margin: 0 auto;
     gap: 1.5rem;
+    @media screen and (max-width: 770px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3,minmax(0,1fr));
+
+    }
     .company {
       grid-column: span 2 / span 2;
       img {
         color: #ffffff !important;
         margin-bottom: 16px;
+
+
       }
       h1 {
         margin-bottom: 0.25rem;

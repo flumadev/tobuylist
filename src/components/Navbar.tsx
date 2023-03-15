@@ -13,7 +13,7 @@ export default function Navbar(){
                         To Buy List
                     </h1>
                 </li>
-                <li>
+                <li className={styles.linksList}>
                     <ul className={styles.links}>
                         <li>
                             <Link href={"/roadmap"} >
@@ -44,7 +44,7 @@ export default function Navbar(){
                     </ul>
                 </li>
 
-                <li>
+                <li className={styles.socialList}>
                     <ul className={styles.social}>
                         <li>
                             <DiscordLogoIcon width={24} height={24}/>

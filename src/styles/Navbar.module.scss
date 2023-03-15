@@ -8,6 +8,7 @@
    justify-content: space-between;
    align-items: end;
    gap: 12px;
+
    .links {
      display: flex;
      gap: 12px;
@@ -21,7 +22,15 @@
      gap: 16px;
      justify-content: end;
    }
-   li {
+
+   @media screen and (max-width: 500px) {
+    .linksList, .socialList {
+      display: none;
+
+    }
+   }
+
+     li {
      list-style: none;
      a{
        transition: font-weight 0.2s;
