@@ -85,7 +85,7 @@ anything else. Here are the steps you'll need to take to contribute:
 - Open a pull request (PR) to the original repository with a clear and concise description of the changes you made.
 - make sure to use commitlint to make your commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format.
 - If you are working on an issue, make sure to include the issue number in the PR description.
--
+
 ### Documentation
 
 All changes to the code must be accompanied by relevant documentation updates. Please make sure the documentation is
