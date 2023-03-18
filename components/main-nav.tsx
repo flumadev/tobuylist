@@ -1,9 +1,9 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { NavItem } from "../types/nav"
 import { siteConfig } from "../config/site"
 import { cn } from "../lib/utils"
+import { NavItem } from "../types/nav"
 import { Icons } from "./icons"
 import { Button } from "./ui/button"
 import {
@@ -13,13 +13,24 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu"
+} from "./ui/dropdown-menu";
+import axios from "axios";
+import { useSession, signIn, signOut } from "next-auth/react"
+import {useEffect} from "react";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
 interface MainNavProps {
   items?: NavItem[]
 }
 
 export function MainNav({ items }: MainNavProps) {
+
+  const { data: session, status } = useSession()
+
+useEffect(() => {
+  console.log(session, status)
+},[status])
+
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
@@ -28,6 +39,15 @@ export function MainNav({ items }: MainNavProps) {
           {siteConfig.name}
         </span>
       </Link>
+      {!session ? (
+      <Button onClick={() => signIn("google")}>
+          Login
+      </Button>
+      ) : (
+      <Button onClick={() => signOut()}>
+          Logout
+      </Button>
+      )}
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
           {items?.map(
@@ -46,6 +66,11 @@ export function MainNav({ items }: MainNavProps) {
               )
           )}
         </nav>
+      ) : null}
+      {session ? (
+        <Avatar>
+          <AvatarImage src={session?.user?.image} alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback></Avatar>
       ) : null}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

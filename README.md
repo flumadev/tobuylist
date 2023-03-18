@@ -129,8 +129,18 @@ For this you can run `yarn format:write` in the root of the project.
 ### Communication
 If you need help or have any questions, please open an issue in the repository.
 
-# WIP
+# Architecture
+The project is built with [Next.js](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/).
+Using [shadcn](https://ui.shadcn.com/) components and [TailwindCSS](https://tailwindcss.com/) for utility classes.
+[Prisma](https://www.prisma.io/) is used for database management, [planetscale](https://planetscale.com/) for database hosting and [next-auth](https://next-auth.js.org/) for authentication.
 
-- Roadmap
-- Architecture
-- Structure
+# Roadmap
+
+- [ ] Create/Edit private lists
+- [ ] Create/Make public lists
+- [ ] Share list with others
+- [ ] Share editable list with others
+- [ ] Duplicate others list
+- [ ] Bookmark list
+
+

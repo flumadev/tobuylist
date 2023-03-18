@@ -1,7 +1,7 @@
-import type {AppProps} from "next/app"
-import {Inter as FontSans} from "@next/font/google"
-import {ThemeProvider} from "next-themes"
-import {SessionProvider} from "next-auth/react"
+import type { AppProps } from "next/app"
+import { Inter as FontSans } from "@next/font/google"
+import { SessionProvider } from "next-auth/react"
+import { ThemeProvider } from "next-themes"
 
 import "@/../styles/globals.css"
 
@@ -11,7 +11,10 @@ const fontSans = FontSans({
   display: "swap",
 })
 
-export default function App({Component, pageProps: {session, ...pageProps}}: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
     <>
       <SessionProvider session={session}>
