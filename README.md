@@ -83,23 +83,51 @@ anything else. Here are the steps you'll need to take to contribute:
 5. Push your changes to the branch on your forked repository.
 
 - Open a pull request (PR) to the original repository with a clear and concise description of the changes you made.
-
+- make sure to use commitlint to make your commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format.
+- If you are working on an issue, make sure to include the issue number in the PR description.
+-
 ### Documentation
 
 All changes to the code must be accompanied by relevant documentation updates. Please make sure the documentation is
 up-to-date before submitting your changes.
 
 ### Code Style
-The code in this repository follows the style defined by ESLint with the following configurations:
+The code in this repository follows the style defined by Prettier with the following configurations:
 
-Spaces instead of tabs
-Single quotes instead of double quotes
-Semicolon required
+```js
+endOfLine: "lf",
+  semi: false,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "es5",
+  importOrder: [
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^types$",
+    "^@/types/(.*)$",
+    "^@/config/(.*)$",
+    "^@/lib/(.*)$",
+    "^@/components/(.*)$",
+    "^@/styles/(.*)$",
+    "^[./]",
+  ],
+  importOrderSeparation: false,
+  importOrderSortSpecifiers: true,
+  importOrderBuiltinModulesToTop: true,
+  importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  importOrderMergeDuplicateImports: true,
+  importOrderCombineTypeAndValueImports: true,
+  plugins: ["@ianvs/prettier-plugin-sort-imports"],
+```
 
 Before submitting a PR, please make sure your code adheres to these style configurations.
+For this you can run `yarn format:write` in the root of the project.
+
 
 ### Communication
-If you need help or have any questions, please open an issue in the repository or contact the development team by email or through Slack.
+If you need help or have any questions, please open an issue in the repository.
 
 # WIP
 
