@@ -29,14 +29,14 @@ or use online
     <i>~ Links will be added once a release is available. ~</i>
   </p>
     </p>
-Tobuylist is an open source cross-platform for shareable shopping list. 
+Tobuylist is an open source cross-platform for shareable shopping list.
 <br/>
 <br/>
 
 > NOTE: To buy list is under active development, most of the listed features are still experimental and subject to
 > change.
 
-Combine your shopping lists into one database that you can organize and explore from any device. 
+Combine your shopping lists into one database that you can organize and explore from any device.
 
 Designed for people who love to shop. To buy list provides a free list
 management experience like no other.
@@ -52,9 +52,25 @@ management experience like no other.
   <br />
 </p>
 
+# Motivation
+
+As a computer enthusiast, I often find myself browsing through various websites looking for the latest and greatest
+computer components and peripherals. However, keeping track of all the items that caught my eye proved to be a
+challenging task. I would write down lists on a notepad or spreadsheet, only to lose track of them or forget to update
+them later.
+
+This frustration led me to create a solution: a shareable shopping list. By creating a website dedicated to tracking
+accessories to buy, I could easily keep my lists organized and accessible from anywhere. Additionally, by
+making the list shareable, I could collaborate with friends and family, allowing them to add their own suggestions and
+feedback to the list.
+
+Creating this website not only provided me with a valuable tool for tracking my purchases, but it also allowed me to
+share my passion with others and build a sense of community around. Ultimately, the motivation behind
+creating this website was to simplify the process of tracking what items I wanted to buy, while also fostering
+a sense of collaboration and community among like-minded individuals.
+
 # WIP
-        
-- Motivation
+
 - Roadmap
 - Developer Guide
 - Architecture
