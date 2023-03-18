@@ -6,6 +6,8 @@ import { Layout } from "@/components/layout"
 import { buttonVariants } from "@/components/ui/button"
 
 export default function IndexPage() {
+
+
   return (
     <Layout>
       <Head>
@@ -45,6 +47,7 @@ export default function IndexPage() {
           >
             GitHub
           </Link>
+
         </div>
       </section>
     </Layout>

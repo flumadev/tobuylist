@@ -69,9 +69,40 @@ share my passion with others and build a sense of community around. Ultimately, 
 creating this website was to simplify the process of tracking what items I wanted to buy, while also fostering
 a sense of collaboration and community among like-minded individuals.
 
+# Developer guide
+
+### Contributing
+
+We welcome any contributions to this project, whether they be bug fixes, new features, documentation improvements, or
+anything else. Here are the steps you'll need to take to contribute:
+
+1. Check for any open issues in the repository that you want to address or improve.
+2. Create a new branch to work on your changes using the command git checkout -b my-branch-name.
+3. Make the necessary changes to the code.
+4. Commit your changes with a clear and descriptive message.
+5. Push your changes to the branch on your forked repository.
+
+- Open a pull request (PR) to the original repository with a clear and concise description of the changes you made.
+
+### Documentation
+
+All changes to the code must be accompanied by relevant documentation updates. Please make sure the documentation is
+up-to-date before submitting your changes.
+
+### Code Style
+The code in this repository follows the style defined by ESLint with the following configurations:
+
+Spaces instead of tabs
+Single quotes instead of double quotes
+Semicolon required
+
+Before submitting a PR, please make sure your code adheres to these style configurations.
+
+### Communication
+If you need help or have any questions, please open an issue in the repository or contact the development team by email or through Slack.
+
 # WIP
 
 - Roadmap
-- Developer Guide
 - Architecture
 - Structure
