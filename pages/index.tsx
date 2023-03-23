@@ -3,9 +3,18 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { Layout } from "@/components/layout"
-import { buttonVariants } from "@/components/ui/button"
+import {Button, buttonVariants} from "@/components/ui/button"
+import {getAPIClient} from "@/services/axios";
+import {api} from "@/services/api";
 
 export default function IndexPage() {
+
+  function testeGet() {
+    api.post('/api/lists/create')
+      .then(response => response)
+      .then(data => console.log(data));
+  }
+
   return (
     <Layout>
       <Head>
@@ -42,6 +51,11 @@ export default function IndexPage() {
           >
             GitHub
           </Link>
+        </div>
+        <div>
+          <Button onClick={testeGet}>
+            teste de get
+          </Button>
         </div>
       </section>
     </Layout>

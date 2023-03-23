@@ -11,5 +11,21 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  options: {
+    session: { strategy: "jwt" },
+    jwt: {
+      secret: process.env.JWT_SECRET,
+    },
+  },
+  callbacks: {
+    async jwt({ token, account, profile }) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token
+        token.id = profile.id
+      }
+      return token
+    }
+  }
 }
 export default NextAuth(authOptions)
