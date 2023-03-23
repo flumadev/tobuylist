@@ -6,10 +6,13 @@ import { Layout } from "@/components/layout"
 import {Button, buttonVariants} from "@/components/ui/button"
 import {getAPIClient} from "@/services/axios";
 import {api} from "@/services/api";
+import {parseCookies} from "nookies";
 
 export default function IndexPage() {
 
   function testeGet() {
+    const cookies = parseCookies()
+    console.log({ cookies })
     api.post('/api/lists/create')
       .then(response => response)
       .then(data => console.log(data));

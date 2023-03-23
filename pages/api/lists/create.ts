@@ -1,6 +1,5 @@
 import { authOptions } from 'pages/api/auth/[...nextauth]'
 import { getServerSession } from "next-auth/next"
-import { getToken } from 'next-auth/jwt'
 
 export default async function handler(req, res) {
   if(req.method !== 'POST'){

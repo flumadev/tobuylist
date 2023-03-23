@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import axios from "axios";
-import { useSession, signIn, signOut } from "next-auth/react"
+import {useSession, signIn, signOut, getSession} from "next-auth/react"
 import {useEffect} from "react";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
@@ -25,11 +25,16 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
 
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
 
-useEffect(() => {
-  console.log(session, status)
-},[status])
+  function handleSignIn() {
+    signIn("google" ).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -40,7 +45,7 @@ useEffect(() => {
         </span>
       </Link>
       {!session ? (
-      <Button onClick={() => signIn("google")}>
+      <Button onClick={() => handleSignIn()}>
           Login
       </Button>
       ) : (
