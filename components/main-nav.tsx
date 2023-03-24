@@ -1,108 +1,16 @@
 import * as React from "react"
-import Link from "next/link"
-
-import { siteConfig } from "../config/site"
-import { cn } from "../lib/utils"
 import { NavItem } from "../types/nav"
-import { Icons } from "./icons"
-import { Button } from "./ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import axios from "axios";
-import { useSession, signIn, signOut } from "next-auth/react"
-import {useEffect} from "react";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
-interface MainNavProps {
-  items?: NavItem[]
-}
-
-export function MainNav({ items }: MainNavProps) {
-
-  const { data: session, status } = useSession()
-
-useEffect(() => {
-  console.log(session, status)
-},[status])
+export function MainNav() {
 
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-2 md:flex">
-        <Icons.logo className="h-6 w-6" />
-        <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
-        </span>
-      </Link>
-      {!session ? (
-      <Button onClick={() => signIn("google")}>
-          Login
-      </Button>
-      ) : (
-      <Button onClick={() => signOut()}>
-          Logout
-      </Button>
-      )}
-      {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center text-lg font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-100 sm:text-sm",
-                    item.disabled && "cursor-not-allowed opacity-80"
-                  )}
-                >
-                  {item.title}
-                </Link>
-              )
-          )}
-        </nav>
-      ) : null}
-      {session ? (
-        <Avatar>
-          <AvatarImage src={session?.user?.image} alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback></Avatar>
-      ) : null}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="-ml-4 text-base hover:bg-transparent focus:ring-0 md:hidden"
-          >
-            <Icons.logo className="mr-2 h-4 w-4" />{" "}
-            <span className="font-bold">Menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="start"
-          sideOffset={24}
-          className="w-[300px] overflow-scroll"
-        >
-          <DropdownMenuLabel>
-            <Link href="/" className="flex items-center">
-              <Icons.logo className="mr-2 h-4 w-4" /> {siteConfig.name}
-            </Link>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <DropdownMenuItem key={index} asChild>
-                  <Link href={item.href}>{item.title}</Link>
-                </DropdownMenuItem>
-              )
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <div className="flex items-center justify-center gap-6">
+      <h1 className="font-bold text-3xl cursor-pointer dark:">
+        Minhas listas
+      </h1>
+      <h1 className="font-bold text-3xl cursor-pointer dark: opacity-25">
+        Listas públicas
+      </h1>
     </div>
   )
 }
