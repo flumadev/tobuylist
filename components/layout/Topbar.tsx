@@ -27,7 +27,7 @@ export function Topbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent position="right" className="w-11/12 sm:w-1/2">
-                <div className="flex flex-col gap-4 mt-4">
+                <div className="flex flex-col gap-2 mt-4">
                   <h1 className="font-bold text-2xl cursor-pointer">
                     Minhas listas
                   </h1>
@@ -35,8 +35,10 @@ export function Topbar() {
                     Listas públicas
                   </h1>
                 </div>
-                <hr className="opacity-100 border-t-slate-200 dark:border-t-slate-700 my-8" />
-                <SidebarContent />
+                <hr className="opacity-100 border-t-slate-200 dark:border-t-slate-700 my-4 md:my-6" />
+                <div className="flex flex-col h-[calc(100svh-155px)] shrink-0">
+                  <SidebarContent />
+                </div>
               </SheetContent>
             </Sheet>
           </nav>
