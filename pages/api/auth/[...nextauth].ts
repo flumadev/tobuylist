@@ -1,31 +1,35 @@
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import {prisma} from '@/lib/client.prisma'
+
+import { prisma } from "@/lib/client.prisma"
+
 export const authOptions = {
-  // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
     }),
   ],
-  options: {
-    session: { strategy: "jwt" },
-    jwt: {
-      secret: process.env.JWT_SECRET,
+  callbacks: {
+    session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub as string
+      }
+      return session
     },
   },
-  callbacks: {
-    async jwt({ token, account, profile }) {
-      // Persist the OAuth access_token and or the user id to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token
-        token.id = profile.id
-      }
-      return token
-    }
-  }
+  secret: process.env.JWT_SECRET,
+  session: {
+    strategy: "jwt" as const,
+  },
 }
 export default NextAuth(authOptions)
