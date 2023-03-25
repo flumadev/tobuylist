@@ -1,6 +1,10 @@
 import * as React from "react"
+import { useEffect } from "react"
 import Link from "next/link"
+import axios from "axios"
+import { getSession, signIn, signOut, useSession } from "next-auth/react"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { siteConfig } from "../config/site"
 import { cn } from "../lib/utils"
 import { NavItem } from "../types/nav"
@@ -13,28 +17,24 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import axios from "axios";
-import {useSession, signIn, signOut, getSession} from "next-auth/react"
-import {useEffect} from "react";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+} from "./ui/dropdown-menu"
 
 interface MainNavProps {
   items?: NavItem[]
 }
 
 export function MainNav({ items }: MainNavProps) {
-
   const { data: session } = useSession()
 
   function handleSignIn() {
-    signIn("google" ).then((res) => {
-      console.log(res)
-    }).catch((err) => {
-      console.log(err)
-    })
+    signIn("google")
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
-
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -45,13 +45,9 @@ export function MainNav({ items }: MainNavProps) {
         </span>
       </Link>
       {!session ? (
-      <Button onClick={() => handleSignIn()}>
-          Login
-      </Button>
+        <Button onClick={() => handleSignIn()}>Login</Button>
       ) : (
-      <Button onClick={() => signOut()}>
-          Logout
-      </Button>
+        <Button onClick={() => signOut()}>Logout</Button>
       )}
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
@@ -75,7 +71,8 @@ export function MainNav({ items }: MainNavProps) {
       {session ? (
         <Avatar>
           <AvatarImage src={session?.user?.image} alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback></Avatar>
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
       ) : null}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

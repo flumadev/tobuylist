@@ -83,10 +83,8 @@ model Bookmark {
 }
 
 model List {
-  id             String           @id @default(cuid())
+  id             String           @id @default(uuid())
   name           String
-  description    String?
-  image          String?
   userId         String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
@@ -99,14 +97,17 @@ model List {
 }
 
 model ListItem {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  image       String?
-  listId      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  List        List     @relation(fields: [listId], references: [id])
+  id        String   @id @default(cuid())
+  image     String?
+  name      String
+  price     Int?
+  quantity  Int?
+  storeUrl  String?
+  storeName String?
+  listId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  List      List     @relation(fields: [listId], references: [id])
 }
 
 model Tag {
@@ -146,4 +147,13 @@ model ListShareToken {
   expiresAt DateTime?
   updatedAt DateTime  @updatedAt
   List      List      @relation(fields: [listId], references: [id])
+}
+
+model Logs {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  message   String
+  type      String
+  userId    String?
 }

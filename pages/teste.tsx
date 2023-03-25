@@ -1,21 +1,49 @@
 import Head from "next/head"
 import Link from "next/link"
+import { api } from "@/services/api"
+import { getAPIClient } from "@/services/axios"
+import { parseCookies } from "nookies"
 
 import { siteConfig } from "@/config/site"
 import { Layout } from "@/components/layout"
-import {Button, buttonVariants} from "@/components/ui/button"
-import {getAPIClient} from "@/services/axios";
-import {api} from "@/services/api";
-import {parseCookies} from "nookies";
+import { Button, buttonVariants } from "@/components/ui/button"
 
 export default function IndexPage() {
+  function criarLista() {
+    api
+      .post("/api/lists", {
+        name: "teste",
+        tags: ['clfm04gmn0000vkao85bv2c9j', 'clfm04gmn0002vkao9vtqslvm'],
+      })
+      .then((response) => response)
+      .then((data) => console.log(data))
+  }
 
-  function testeGet() {
-    const cookies = parseCookies()
-    console.log({ cookies })
-    api.post('/api/lists/create')
-      .then(response => response)
-      .then(data => console.log(data));
+  function criarItem() {
+    api
+      .post("/api/items/create", {
+          name: 'Item pra teste',
+        listId: 'clflwvam60001vkfgcgh0q0ub',
+        price: 250000,
+        storeUrl: 'https://www.amazon.com/,',
+        storeName: 'Amazon',
+      })
+      .then((response) => response)
+      .then((data) => console.log(data))
+  }
+
+  function buscarLista() {
+    api
+      .get("/api/lists/clflwvam60001vkfgcgh0q0ub")
+      .then((response) => response)
+      .then((data) => console.log(data))
+  }
+
+  function buscarTodasAsLista() {
+    api
+      .get("/api/lists")
+      .then((response) => response)
+      .then((data) => console.log(data))
   }
 
   return (
@@ -56,9 +84,10 @@ export default function IndexPage() {
           </Link>
         </div>
         <div>
-          <Button onClick={testeGet}>
-            teste de get
-          </Button>
+          <Button onClick={criarLista}>criar lista</Button>
+          <Button onClick={criarItem}>criar item na lista</Button>
+          <Button onClick={buscarLista}>buscar lista</Button>
+          <Button onClick={buscarTodasAsLista}>buscar todas as lista</Button>
         </div>
       </section>
     </Layout>
