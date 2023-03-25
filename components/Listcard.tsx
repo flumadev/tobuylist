@@ -1,5 +1,5 @@
 import {Avatar, AvatarImage} from "@/components/ui/avatar";
-import {BookmarkIcon, LinkIcon, LockIcon} from "lucide-react";
+import {Bookmark, Link, Lock} from "lucide-react";
 import Tag from "@/components/Tag";
 
 
@@ -8,7 +8,7 @@ export default function Listcard() {
     <div className="flex flex-col gap-6 bg-white p-8 rounded-3xl max-w-[360px] max-h-[360px] dark:bg-slate-900">
       <div className={"flex gap-2 "}>
         <span>
-          <LockIcon />
+          <Lock />
         </span>
         <h1 className="text-2xl font-bold">Nome da lista</h1>
         <span></span>
@@ -29,11 +29,11 @@ export default function Listcard() {
             )
           })}
         </div>
-        <LinkIcon />
+        <Link />
       </div>
       <div className={"flex justify-between"}>
         <p>123 likes</p>
-        <BookmarkIcon />
+        <Bookmark />
       </div>
     </div>
   )
