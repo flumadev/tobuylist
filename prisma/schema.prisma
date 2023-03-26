@@ -52,6 +52,7 @@ model User {
   Bookmark      Bookmark[]
   List          List[]
   Collaborator  Collaborator[]
+  LikedList     LikedList[]
 }
 
 model VerificationToken {
@@ -96,6 +97,7 @@ model List {
   TagList        TagList[]
   Collaborator   Collaborator[]
   ListShareToken ListShareToken[]
+  LikedList      LikedList[]
 }
 
 model ListItem {
@@ -110,6 +112,16 @@ model ListItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   List      List     @relation(fields: [listId], references: [id])
+}
+
+model LikedList {
+  id        String   @id @default(cuid())
+  listId    String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  List      List     @relation(fields: [listId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
 }
 
 model Tag {

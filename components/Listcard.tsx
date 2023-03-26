@@ -1,4 +1,5 @@
-import { Bookmark, CalendarDays, Link, Lock } from "lucide-react"
+import { BookmarkFilledIcon, BookmarkIcon } from "@radix-ui/react-icons"
+import { Link, Lock } from "lucide-react"
 
 import Tag from "@/components/Tag"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -14,8 +15,13 @@ type ListcardProps = {
     id: string
     name: string
     userId: string
+    likes: number
     Collaborator: any[]
     TagList: any[]
+    LikedList: any[]
+    _count: {
+      LikedList: number
+    }
   }
 }
 
@@ -79,7 +85,15 @@ function Collaborators(props: CollaboratorProps) {
 
 export default function Listcard(props: ListcardProps) {
   const { data } = props
-  const { name, Collaborator: collaborators, TagList: tags, totalValue } = data
+  const {
+    name,
+    Collaborator: collaborators,
+    TagList: tags,
+    totalValue,
+    _count,
+    LikedList,
+  } = data
+  console.log(data)
   return (
     <div className="flex flex-col justify-between gap-6 bg-white  p-8 rounded-3xl max-w-[360px] min-h-[360px] w-full h-min dark:bg-slate-900 ">
       <div className={"flex gap-2 "}>
@@ -106,8 +120,8 @@ export default function Listcard(props: ListcardProps) {
         <Link />
       </div>
       <div className={"flex justify-between"}>
-        <p>123 likes</p>
-        <Bookmark />
+        <p>{_count.LikedList} likes</p>
+        {LikedList.length > 0 ? <BookmarkFilledIcon /> : <BookmarkIcon />}
       </div>
     </div>
   )

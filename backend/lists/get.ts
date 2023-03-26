@@ -39,6 +39,8 @@ export async function getList(req, res) {
 }
 
 export async function getAllLists(req, res) {
+  const session = await getServerSession(req, res, authOptions)
+
   try {
     prisma.$connect()
 
@@ -49,6 +51,18 @@ export async function getAllLists(req, res) {
             Tag: true,
           },
         },
+        _count: {
+          select: {
+            LikedList: true,
+          },
+        },
+        LikedList: session
+          ? {
+              where: {
+                userId: session.user.id,
+              },
+            }
+          : false,
         Collaborator: {
           include: {
             User: {
