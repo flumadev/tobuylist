@@ -19,14 +19,28 @@ export async function getList(req, res) {
       },
       include: {
         ListItems: true,
-        TagList: true,
-        Collaborator: true,
+        TagList: {
+          include: {
+            Tag: true,
+          },
+        },
+        Collaborator: {
+          include: {
+            User: {
+              select: {
+                id: true,
+                name: true,
+                image: true,
+                totalLists: true,
+              },
+            },
+          },
+        },
       },
     })
 
     res.status(200).json(list)
     prisma.$disconnect()
-
     return
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
