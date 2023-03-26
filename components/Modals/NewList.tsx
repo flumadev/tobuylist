@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useRouter } from "next/router"
 import { api } from "@/services/api"
 
 import { Button } from "@/components/ui/button"
@@ -12,13 +13,9 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 
-type NewListProps = {
-  onNewList: () => void
-}
-
-export default function NewList(props: NewListProps) {
+export default function NewList() {
   const [open, setOpen] = useState<boolean>()
-  const { onNewList } = props
+  const router = useRouter()
 
   function handleCancel() {
     setOpen(false)
@@ -29,7 +26,8 @@ export default function NewList(props: NewListProps) {
     api
       .post("/api/lists", { name: e.target[0].value })
       .then((response) => {
-        onNewList()
+        console.log(response)
+        router.push(`/lists/${response.data.list}`)
         setOpen(false)
       })
       .catch((e) => {

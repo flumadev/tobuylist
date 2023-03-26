@@ -37,7 +37,7 @@ export default function IndexPage() {
               </div>
               <Input id="email" placeholder="Email" />
             </div>
-            <NewList onNewList={getLists} />
+            <NewList />
           </div>
           <div className="grid w-full grid-cols-1 self-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 ">
             {lists.map((list, i) => {
