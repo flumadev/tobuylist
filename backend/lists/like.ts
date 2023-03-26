@@ -19,16 +19,17 @@ export default async function likeList(req, res) {
   try {
     prisma.$connect()
 
-    //TODO: Check if user already liked list
-    //TODO: Like list if not already liked
-    //TODO: Dislike list if already liked
+    await prisma.likedList.create({
+      data: {
+        listId: pid,
+        userId: session.user.id,
+      },
+    })
 
     prisma.$disconnect()
 
-    return
+    return res.status(200).json({ message: "ok" })
   } catch (e) {
-    console.log(e)
-    return res.status(500).json({ message: e })
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
       res.status(500).json({ message: "Internal server error" })
       return
