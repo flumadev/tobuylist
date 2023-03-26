@@ -1,7 +1,8 @@
-import {getServerSession} from "next-auth/next";
-import {authOptions} from "@/pages/api/auth/[...nextauth]";
-import {prisma} from "@/lib/client.prisma";
-import {Prisma} from "@prisma/client";
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { Prisma } from "@prisma/client"
+import { getServerSession } from "next-auth/next"
+
+import { prisma } from "@/lib/client.prisma"
 
 export async function createList(req, res) {
   if (req.body === undefined) {
@@ -18,7 +19,6 @@ export async function createList(req, res) {
     return res.status(400).json({ message: "Name is required" })
   }
 
-
   try {
     prisma.$connect()
 
@@ -28,15 +28,6 @@ export async function createList(req, res) {
         userId: session.user.id,
       },
     })
-
-  if (req.body.tags.length > 0) {
-    await prisma.tagList.createMany({
-      data: req.body.tags.map(tag => {
-        return {listId: createdList.id, tagId: tag}
-      })
-    })
-  }
-
 
     res.status(200).json({ message: "list created", list: createdList.id })
     prisma.$disconnect()

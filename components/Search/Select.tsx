@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import {Check, ChevronsUpDown} from "lucide-react"
+import { Check, ChevronsUpDown } from "lucide-react"
 
-import {cn} from "@/lib/utils"
-import {Button} from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -59,15 +59,13 @@ export default function SearchSelect() {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {value
-            ? tags.find((tag) => tag.value === value)?.label
-            : "Todas"}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
+          {value ? tags.find((tag) => tag.value === value)?.label : "Todas"}
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Buscar tags"/>
+          <CommandInput placeholder="Buscar tags" />
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {tags.map((tag) => (

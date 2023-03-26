@@ -39,19 +39,19 @@ model Session {
 }
 
 model User {
-  id            String        @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?       @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  totalBalance  Int           @default(0)
-  totalLists    Int           @default(0)
+  totalBalance  Int            @default(0)
+  totalLists    Int            @default(0)
   followers     Followers[]
   Bookmark      Bookmark[]
   List          List[]
-  Colaborator   Colaborator[]
+  Collaborator  Collaborator[]
 }
 
 model VerificationToken {
@@ -89,10 +89,12 @@ model List {
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
   User           User             @relation(fields: [userId], references: [id])
+  totalValue     Int              @default(0)
+  likes          Int              @default(0)
   ListItems      ListItem[]
   Bookmarks      Bookmark[]
   TagList        TagList[]
-  Colaborator    Colaborator[]
+  Collaborator   Collaborator[]
   ListShareToken ListShareToken[]
 }
 
@@ -128,7 +130,7 @@ model TagList {
   List      List     @relation(fields: [listId], references: [id])
 }
 
-model Colaborator {
+model Collaborator {
   id        String   @id @default(cuid())
   userId    String
   listId    String

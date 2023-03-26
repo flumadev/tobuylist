@@ -41,7 +41,7 @@ export default async function handler(req, res) {
 
   let storeName = body.storeName
   if (!storeName) {
-    if(!body.storeUrl) {
+    if (!body.storeUrl) {
       storeName = ""
     } else {
       storeName = new URL(body.storeUrl).hostname.split(".")[1]
@@ -49,7 +49,6 @@ export default async function handler(req, res) {
   }
 
   const price = body.price || 0
-
 
   try {
     prisma.$connect()

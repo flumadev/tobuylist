@@ -1,6 +1,5 @@
-
-import {createList} from "@/backend/lists/create";
-import {getAllLists} from "@/backend/lists/get";
+import { createList } from "@/backend/lists/create"
+import { getAllLists } from "@/backend/lists/get"
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
