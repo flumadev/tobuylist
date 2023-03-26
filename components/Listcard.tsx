@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { api } from "@/services/api"
 import { BookmarkFilledIcon, BookmarkIcon } from "@radix-ui/react-icons"
-import { Link, Lock } from "lucide-react"
+import { LinkIcon, Lock } from "lucide-react"
 
 import Tag from "@/components/Tag"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -119,13 +120,13 @@ export default function Listcard(props: ListcardProps) {
 
   return (
     <div className="flex flex-col justify-between gap-6 bg-white  p-8 rounded-3xl max-w-[360px] min-h-[360px] w-full h-min dark:bg-slate-900 ">
-      <div className={"flex gap-2 "}>
+      <Link href={id} className={"flex gap-2 "}>
         <span>
           <Lock />
         </span>
         <h1 className="text-2xl font-bold">{name}</h1>
         <span></span>
-      </div>
+      </Link>
       <h1 className={"text-3xl font-bold"}>
         R$ {new Intl.NumberFormat("pt-BR").format(totalValue / 100)}
       </h1>
@@ -140,7 +141,7 @@ export default function Listcard(props: ListcardProps) {
             <Collaborators data={collaborator} key={i} />
           ))}
         </div>
-        <Link />
+        <LinkIcon />
       </div>
       <div className={"flex justify-between"}>
         <p>{likedCount} likes</p>

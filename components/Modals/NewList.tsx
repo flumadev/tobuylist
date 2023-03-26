@@ -27,7 +27,7 @@ export default function NewList() {
       .post("/api/lists", { name: e.target[0].value })
       .then((response) => {
         console.log(response)
-        router.push(`/lists/${response.data.list}`)
+        router.push(`/${response.data.list}`)
         setOpen(false)
       })
       .catch((e) => {
