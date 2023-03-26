@@ -29,8 +29,6 @@ export async function getList(req, res) {
 
     return
   } catch (e) {
-    console.log(e)
-    return res.status(500).json({ message: e })
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
       res.status(500).json({ message: "Internal server error" })
       return
@@ -45,6 +43,24 @@ export async function getAllLists(req, res) {
     prisma.$connect()
 
     const lists = await prisma.list.findMany({
+      where: session
+        ? {
+            OR: [
+              {
+                Collaborator: {
+                  some: {
+                    userId: session.user.id,
+                  },
+                },
+              },
+              {
+                userId: session.user.id,
+              },
+            ],
+          }
+        : {
+            public: true,
+          },
       include: {
         TagList: {
           include: {
@@ -71,6 +87,12 @@ export async function getAllLists(req, res) {
                 name: true,
                 image: true,
                 totalLists: true,
+                _count: {
+                  select: {
+                    followers: true,
+                    List: true,
+                  },
+                },
               },
             },
           },
@@ -86,8 +108,6 @@ export async function getAllLists(req, res) {
 
     return
   } catch (e) {
-    console.log(e)
-    return res.status(500).json({ message: e })
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
       res.status(500).json({ message: "Internal server error" })
       return

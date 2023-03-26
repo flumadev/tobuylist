@@ -46,38 +46,41 @@ type UserCollaborator = {
   name: string
   image: string
   totalLists: number
+  _count: {
+    followers: number
+    List: number
+  }
 }
 function Collaborators(props: CollaboratorProps) {
-  const { data } = props
-  const { User } = data
+  const { User } = props.data
+
   return (
     <HoverCard>
       <HoverCardTrigger className={"cursor-pointer"}>
         <Avatar className={"ml-[-0.5rem] border"}>
           <AvatarImage src={User.image} />
-          <AvatarFallback>VC</AvatarFallback>
+          <AvatarFallback>{User.name}</AvatarFallback>
         </Avatar>
       </HoverCardTrigger>
       <HoverCardContent className={"w-min"}>
         <div className="flex justify-between flex-col items-start gap-4">
           <div className={"w-full"}>
             <Avatar>
-              <AvatarImage src="https://avatars.githubusercontent.com/u/5020412?v=4" />
-              <AvatarFallback>VC</AvatarFallback>
+              <AvatarImage src={User.image} />
+              <AvatarFallback>{User.name}</AvatarFallback>
             </Avatar>
           </div>
           <div className={"ml-0"}>
-            <b>RPD</b>
-            <p>@zVictorR</p>
+            <b>{User.name}</b>
           </div>
           <div className={"flex gap-8"}>
             <div>
               <p>Listas</p>
-              <b>123</b>
+              <b>{User._count.List}</b>
             </div>
             <div>
               <p>Seguidores</p>
-              <b>342</b>
+              <b>{User._count.followers}</b>
             </div>
           </div>
         </div>
@@ -112,7 +115,7 @@ export default function Listcard(props: ListcardProps) {
   }
 
   useEffect(() => {
-    if (LikedList.length > 0) {
+    if (LikedList?.length > 0) {
       setLiked(true)
     }
     setLikedCount(_count.LikedList)

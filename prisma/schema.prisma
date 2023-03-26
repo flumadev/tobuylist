@@ -91,7 +91,7 @@ model List {
   updatedAt      DateTime         @updatedAt
   User           User             @relation(fields: [userId], references: [id])
   totalValue     Int              @default(0)
-  likes          Int              @default(0)
+  public         Boolean          @default(false)
   ListItems      ListItem[]
   Bookmarks      Bookmark[]
   TagList        TagList[]
