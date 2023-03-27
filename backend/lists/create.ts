@@ -1,13 +1,9 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { Prisma } from "@prisma/client"
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth/next"
-
 import { prisma } from "@/lib/client.prisma"
 
 export async function createList(req, res) {
-  if (req.body === undefined) {
-    return res.status(400).json({ message: "No content defined" })
-  }
 
   const session = await getServerSession(req, res, authOptions)
 
@@ -15,16 +11,20 @@ export async function createList(req, res) {
     return res.status(401).json({ message: "Unauthorized" })
   }
 
-  if (req.body.name === undefined) {
-    return res.status(400).json({ message: "Name is required" })
+  const { name } = req.body
+
+  if (!name) {
+    return res.status(400).json({ message: "No content defined" })
   }
+
+
 
   try {
     prisma.$connect()
 
     const createdList = await prisma.list.create({
       data: {
-        name: req.body.name,
+        name,
         userId: session.user.id,
       },
     })

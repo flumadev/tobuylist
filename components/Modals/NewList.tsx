@@ -1,8 +1,3 @@
-import { useState } from "react"
-import { useRouter } from "next/router"
-import { api } from "@/services/api"
-
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -11,7 +6,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { api } from "@/services/api"
+import { useRouter } from "next/router"
+import { useState } from "react"
 
 export default function NewList() {
   const [open, setOpen] = useState<boolean>()
@@ -36,7 +36,11 @@ export default function NewList() {
   }
 
   return (
-    <Dialog open={open}>
+
+    <Dialog
+      open={open}
+      onOpenChange={(open) => setOpen(open)}
+    >
       <DialogTrigger asChild>
         <Button onClick={() => setOpen(true)}>Nova lista</Button>
       </DialogTrigger>

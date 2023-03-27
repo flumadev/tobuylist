@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import { api } from "@/services/api"
-import { BookmarkFilledIcon, BookmarkIcon } from "@radix-ui/react-icons"
-import { LinkIcon, Lock } from "lucide-react"
-
-import Tag from "@/components/Tag"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { BookmarkFilledIcon, BookmarkIcon } from "@radix-ui/react-icons"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
+import { LinkIcon, Lock } from "lucide-react"
+import { useEffect, useState } from "react"
+
+import Link from "next/link"
+import Tag from "@/components/Tag"
+import { api } from "@/services/api"
 
 type ListcardProps = {
   data: {
@@ -63,7 +63,7 @@ function Collaborators(props: CollaboratorProps) {
         </Avatar>
       </HoverCardTrigger>
       <HoverCardContent className={"w-min"}>
-        <div className="flex justify-between flex-col items-start gap-4">
+        <div className="flex flex-col items-start justify-between gap-4">
           <div className={"w-full"}>
             <Avatar>
               <AvatarImage src={User.image} />
@@ -122,7 +122,7 @@ export default function Listcard(props: ListcardProps) {
   }, [])
 
   return (
-    <div className="flex flex-col justify-between gap-6 bg-white  p-8 rounded-3xl max-w-[360px] min-h-[360px] w-full h-min dark:bg-slate-900 ">
+    <div className="flex h-min min-h-[360px] w-full max-w-[360px]  flex-col justify-between gap-6 rounded-3xl bg-white p-8 dark:bg-slate-900 ">
       <Link href={id} className={"flex gap-2 "}>
         <span>
           <Lock />
@@ -138,8 +138,8 @@ export default function Listcard(props: ListcardProps) {
           <Tag key={i} name={tag?.Tag.name} />
         ))}
       </div>
-      <div className={"flex items-center align-middle gap-2"}>
-        <div className={"flex ml-3"}>
+      <div className={"flex items-center gap-2 align-middle"}>
+        <div className={"ml-3 flex"}>
           {collaborators?.map((collaborator, i) => (
             <Collaborators data={collaborator} key={i} />
           ))}

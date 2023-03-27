@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import Head from "next/head"
-import { api } from "@/services/api"
 
+import Head from "next/head"
+import { Input } from "@/components/ui/input"
 import Listcard from "@/components/Listcard"
+import { Main } from "@/components/layout/Main"
 import NewList from "@/components/Modals/NewList"
 import SearchSelect from "@/components/Search/Select"
-import { Main } from "@/components/layout/Main"
-import { Input } from "@/components/ui/input"
+import { api } from "@/services/api"
 
 export default function IndexPage() {
   const [lists, setLists] = useState([])
@@ -28,10 +28,10 @@ export default function IndexPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="w-full bg-slate-100 dark:bg-slate-800 p-8 ">
-        <div className={" gap-7 flex flex-col"}>
-          <div className={"flex w-full justify-between items-end"}>
-            <div className={"flex gap-2 items-end"}>
+      <section className="w-full bg-slate-100 p-8 dark:bg-slate-800 ">
+        <div className={" flex flex-col gap-7"}>
+          <div className={"flex w-full items-end justify-between"}>
+            <div className={"flex items-end gap-2"}>
               <div>
                 <SearchSelect />
               </div>
@@ -39,7 +39,7 @@ export default function IndexPage() {
             </div>
             <NewList />
           </div>
-          <div className="grid w-full grid-cols-1 self-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 ">
+          <div className="grid w-full grid-cols-1 gap-6 self-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 ">
             {lists.map((list, i) => {
               return <Listcard key={i} data={list} />
             })}
