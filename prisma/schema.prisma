@@ -102,10 +102,10 @@ model List {
 
 model ListItem {
   id        String   @id @default(cuid())
-  image     String?
+  image     String?  @db.LongText
   name      String
   price     Int?
-  quantity  Int?
+  quantity  Int      @default(1)
   storeUrl  String?
   storeName String?
   listId    String
